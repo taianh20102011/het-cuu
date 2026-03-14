@@ -1,221 +1,348 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Khảo sát Hứng thú Nghề nghiệp</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f8fc;
-      padding: 20px;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-    }
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: bold;
-    }
-    input[type="text"], textarea, select {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-      box-sizing: border-box;
-    }
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 16px 16px;
-    }
-    textarea {
-      resize: vertical;
-      height: 80px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
-      background-color: #2980b9;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #1c5980;
-    }
-    table {
-      margin-top: 30px;
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background-color: #ecf0f1;
-    }
-    #resultsSection {
-      display: none;
-      margin-top: 50px;
-    }
-    #devButton {
-      background-color: #27ae60;
-      margin-left: auto;
-      margin-top: 10px;
-    }
-    #devButton:hover {
-      background-color: #1e8449;
-    }
-    .dev-btn-wrapper {
-      text-align: right;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kế Hoạch Chinh Phục Kỳ Thi Tuyển Sinh 10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #3b82f6;
+            --success: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: -webkit-linear-gradient(45deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.2s; }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-item label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            font-size: 0.95rem;
+        }
+
+        .task-item input[type="checkbox"] {
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--text-muted);
+            border-radius: 6px;
+            margin-right: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .task-item input[type="checkbox"]:checked {
+            background-color: var(--success);
+            border-color: var(--success);
+        }
+
+        .task-item input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .task-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin-top: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Toast Notification */
+        #toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #334155;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: bottom 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            font-weight: 600;
+        }
+
+        #toast.show {
+            bottom: 30px;
+        }
+
+        .weekend-badge {
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 10px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>Khảo sát Hứng thú Nghề nghiệp</h2>
-    <form id="surveyForm">
-      <label for="name">Họ và tên:</label>
-      <input type="text" id="name" required>
+    <div class="container">
+        <header>
+            <h1>Chiến Dịch Lên Cấp 3 🚀</h1>
+            <p class="subtitle" id="current-date">Hôm nay: ...</p>
+        </header>
 
-      <label for="class">Lớp:</label>
-      <select id="class" required>
-        <option value="">-- Chọn lớp --</option>
-        <option value="8/1">8/1</option>
-        <option value="8/2">8/2</option>
-        <option value="8/3">8/3</option>
-        <option value="8/4">8/4</option>
-        <option value="8/5">8/5</option>
-        <option value="8/6">8/6</option>
-        <option value="8/7">8/7</option>
-        <option value="8/8">8/8</option>
-        <option value="8/9">8/9</option>
-        <option value="8/10">8/10</option>
-        <option value="8/11">8/11</option>
-      </select>
+        <div class="card">
+            <h2>🎯 Mục tiêu hằng ngày</h2>
+            <ul class="task-list" id="daily-tasks">
+                <li class="task-item">
+                    <label>
+                        <input type="checkbox" data-id="task1">
+                        <span>Giải 1 bài Hình học (Hoàn thành trọn vẹn câu b, c)</span>
+                    </label>
+                </li>
+                <li class="task-item">
+                    <label>
+                        <input type="checkbox" data-id="task2">
+                        <span>Ngữ Văn: Học 1 Mở bài, 1 Kết bài & Bằng chứng</span>
+                    </label>
+                </li>
+                <li class="task-item">
+                    <label>
+                        <input type="checkbox" data-id="task3">
+                        <span>Ngoại ngữ: Nâng cao 10 từ vựng & 1 cấu trúc ngữ pháp</span>
+                    </label>
+                </li>
+            </ul>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+        </div>
 
-      <label for="interest">Bạn có hứng thú với nghề nghiệp nào? Vì sao?</label>
-      <textarea id="interest" required></textarea>
-
-      <label for="actions">Bạn đã làm những gì để thể hiện hứng thú với nghề nghiệp bạn yêu thích?</label>
-      <textarea id="actions" required></textarea>
-
-      <label for="subject">Trong các môn học, bạn thích nhất hoặc học tốt nhất môn học nào?</label>
-      <textarea id="subject" required></textarea>
-
-      <label for="activities">Bạn thường hào hứng, say mê với những hoạt động hoặc công việc nào?</label>
-      <textarea id="activities" required></textarea>
-
-      <label for="traits">Bạn thấy nét tính cách nào của bạn phù hợp với nghề nghiệp bạn hứng thú?</label>
-      <textarea id="traits" required></textarea>
-
-      <button type="submit">Gửi</button>
-
-      <!-- Nút nhà phát triển được đặt sau nút Gửi -->
-      <div class="dev-btn-wrapper">
-        <button id="devButton" type="button">🔒 Dành cho nhà phát triển</button>
-      </div>
-    </form>
-
-    <!-- Vùng chứa bảng kết quả -->
-    <div id="resultsSection">
-      <h2>Dữ liệu đã nhận</h2>
-      <table id="resultsTable">
-        <thead>
-          <tr>
-            <th>Họ tên</th>
-            <th>Lớp</th>
-            <th>Nghề nghiệp & lý do</th>
-            <th>Hành động thể hiện</th>
-            <th>Môn học yêu thích</th>
-            <th>Hoạt động say mê</th>
-            <th>Tính cách phù hợp</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Dữ liệu sẽ hiển thị ở đây -->
-        </tbody>
-      </table>
+        <div class="card" id="weekend-card">
+            <h2>🔥 Thử thách Cuối Tuần <span class="weekend-badge">T7 & CN</span></h2>
+            <ul class="task-list" id="weekend-tasks">
+                <li class="task-item">
+                    <label>
+                        <input type="checkbox" data-id="task4">
+                        <span>Giải 1 đề Toán hoàn chỉnh (Canh đúng 120 phút)</span>
+                    </label>
+                </li>
+                <li class="task-item">
+                    <label>
+                        <input type="checkbox" data-id="task5">
+                        <span>Giải 1 đề Văn hoàn chỉnh (Canh đúng 120 phút)</span>
+                    </label>
+                </li>
+                <li class="task-item">
+                    <label>
+                        <input type="checkbox" data-id="task6">
+                        <span>Giải 1 đề Anh hoàn chỉnh (Canh đúng 60/90 phút)</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const KEY_ACCESS = "To-ba-phat-hanh-tam-4"; // Mã key bảo mật
-  
-    document.getElementById('surveyForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-  
-      const name = document.getElementById('name').value;
-      const userClass = document.getElementById('class').value;
-      const interest = document.getElementById('interest').value;
-      const actions = document.getElementById('actions').value;
-      const subject = document.getElementById('subject').value;
-      const activities = document.getElementById('activities').value;
-      const traits = document.getElementById('traits').value;
-  
-      // Gửi dữ liệu về server trên Replit
-      fetch("https://replit.com/@phamngoctaianh6/GrumpyTomatoFirewall.replit.app/save", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          class: userClass,
-          interest,
-          actions,
-          subject,
-          activities,
-          traits
-        })
-      })
-      .then(response => {
-        if (response.ok) {
-          alert("Dữ liệu đã được gửi và lưu!");
-          document.getElementById("surveyForm").reset();
-        } else {
-          alert("Lỗi khi gửi dữ liệu!");
-        }
-      })
-      .catch(error => {
-        console.error("Lỗi mạng:", error);
-        alert("Không thể kết nối đến máy chủ.");
-      });
-    });
-  
-    document.getElementById("devButton").addEventListener("click", function() {
-      const inputKey = prompt("Vui lòng nhập mã truy cập:");
-      if (inputKey === KEY_ACCESS) {
-        document.getElementById("resultsSection").style.display = "block";
-        alert("Truy cập thành công!");
-      } else {
-        alert("Mã truy cập sai!");
-      }
-    });
-  </script>
-  
+    <div id="toast">Thông báo hằng ngày</div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const progressBar = document.getElementById('progress');
+            const dateDisplay = document.getElementById('current-date');
+            const weekendCard = document.getElementById('weekend-card');
+            
+            // Xử lý Ngày tháng & Hiển thị Thử thách cuối tuần
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = today.toLocaleDateString('vi-VN', options);
+            dateDisplay.textContent = `Hôm nay: ${dateString}`;
+
+            const dayOfWeek = today.getDay(); // 0 là Chủ Nhật, 6 là Thứ 7
+            if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                weekendCard.style.opacity = '0.5';
+                weekendCard.style.pointerEvents = 'none'; // Khóa lại nếu không phải cuối tuần
+                document.querySelector('.weekend-badge').textContent = 'Chưa đến lúc';
+                document.querySelector('.weekend-badge').style.background = '#64748b';
+            }
+
+            // Hệ thống Lưu trữ LocalStorage
+            const storedDate = localStorage.getItem('lastVisitedDate');
+            const currentDateKey = today.toDateString();
+
+            // Nếu qua ngày mới, reset toàn bộ checkbox
+            if (storedDate !== currentDateKey) {
+                localStorage.clear();
+                localStorage.setItem('lastVisitedDate', currentDateKey);
+                showToast("☀️ Chào ngày mới! Bắt đầu chuỗi nhiệm vụ hôm nay nào!");
+            } else {
+                showToast("👋 Mừng bạn quay lại! Tiếp tục cố gắng nhé.");
+            }
+
+            // Load trạng thái checkbox
+            checkboxes.forEach(box => {
+                const isChecked = localStorage.getItem(box.dataset.id) === 'true';
+                box.checked = isChecked;
+                
+                box.addEventListener('change', () => {
+                    localStorage.setItem(box.dataset.id, box.checked);
+                    updateProgress();
+                    
+                    if(box.checked) {
+                        showToast("✨ Tuyệt vời! Bạn vừa hoàn thành 1 mục tiêu.");
+                    }
+                });
+            });
+
+            // Cập nhật thanh tiến độ (Chỉ tính daily tasks vào ngày thường)
+            function updateProgress() {
+                const dailyCheckboxes = document.querySelectorAll('#daily-tasks input[type="checkbox"]');
+                const checkedCount = Array.from(dailyCheckboxes).filter(b => b.checked).length;
+                const percentage = (checkedCount / dailyCheckboxes.length) * 100;
+                progressBar.style.width = `${percentage}%`;
+
+                if(percentage === 100) {
+                    setTimeout(() => showToast("🏆 Chúc mừng! Bạn đã hoàn thành xuất sắc mục tiêu ngày hôm nay!"), 500);
+                }
+            }
+
+            // Quản lý hiển thị Toast Notification
+            let toastTimeout;
+            function showToast(message) {
+                const toast = document.getElementById('toast');
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3500);
+            }
+
+            // Cấp quyền nhận thông báo của Trình duyệt (Tùy chọn)
+            if ("Notification" in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted" && storedDate !== currentDateKey) {
+                        new Notification("Kế hoạch học tập 📚", {
+                            body: "Đừng quên giải bài Hình học và học từ vựng hôm nay nhé!",
+                            icon: "https://cdn-icons-png.flaticon.com/512/3143/3143606.png"
+                        });
+                    }
+                });
+            }
+
+            updateProgress();
+        });
+    </script>
 </body>
 </html>
